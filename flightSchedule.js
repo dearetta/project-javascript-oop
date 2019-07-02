@@ -22,7 +22,7 @@ class airplaneType {
     console.log(
       `This aircraft ${this.name} travelled to ${
         this.destination
-      } in ${timeTravelled} hours`
+      } km in ${timeTravelled} hours`
     );
   }
 
@@ -43,16 +43,8 @@ class airplaneType {
   }
 }
 
-const boeing = new airplaneType();
-console.log(boeing);
-
-const airbus = new airplaneType("Airbus");
-console.log(airbus.getName());
-console.log(airbus);
-
-airbus.travelDistance("19");
-airbus.travelTime("9");
-
+// const boeing = new airplaneType();
+// console.log(boeing);
 class airplaneMaintenance extends airplaneType {
   constructor(name, pic) {
     super(name);
@@ -64,26 +56,29 @@ class airplaneMaintenance extends airplaneType {
   }
 }
 
-const manager = new airplaneMaintenance("Boeing", "Dea");
-console.log(manager);
-manager.getName();
-manager.maintenancePic();
-
 class airplaneFare extends airplaneType {
   constructor(name, distance) {
     super(name, distance);
   }
-
+  
   ticket(price) {
     const amountTicket = prompt("Enter amount of tickets :");
     const ticket =
-      parseInt(price) *
-      parseInt(this.distance) *
-      parseInt(amountTicket);
-
-    console.log(`The price of the ticket is ${ticket} USD`);
+    parseInt(price) *
+    parseInt(this.distance) *
+    parseInt(amountTicket);
+    
+    console.log(`The price of the ticket(s) is ${price} * ${this.distance} * ${amountTicket} = ${ticket} USD`);
   }
 }
+const airbus = new airplaneType("Airbus");
+console.log(airbus);
+airbus.travelDistance("19");
+airbus.travelTime("9");
+const manager = new airplaneMaintenance("Boeing", "Dea");
+console.log(manager);
+manager.getName();
+manager.maintenancePic();
 
 const ticketTotal = new airplaneFare();
 ticketTotal.ticket(8);
